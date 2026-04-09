@@ -1,0 +1,12 @@
+services:
+  legacy-vault:
+    build: .
+    container_name: legacy-vault
+    ports:
+      - "${PORT:-3000}:${PORT:-3000}"
+    volumes:
+      - ./data:/app/data
+      - ./backups:/app/backups
+    env_file:
+      - .env
+    restart: unless-stopped
