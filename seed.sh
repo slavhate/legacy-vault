@@ -9,7 +9,7 @@
 # Usage: ./seed.sh <jwt_token>
 #   Get the token by logging in via the API first.
 
-BASE="http://localhost:3737/api"
+BASE="http://localhost:3000/api"
 TOKEN="$1"
 
 if [ -z "$TOKEN" ]; then
