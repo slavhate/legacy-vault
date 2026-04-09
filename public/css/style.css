@@ -192,19 +192,76 @@ a:hover { text-decoration: underline; }
 }
 
 .sidebar-header {
-  padding: 20px;
+  padding: 24px 20px 16px;
   border-bottom: 1px solid var(--border);
+  text-align: center;
 }
 
-.sidebar-header h2 {
-  font-size: 18px;
-  font-weight: 700;
+.sidebar-brand {
+  font-size: 24px;
+  font-weight: 800;
+  letter-spacing: -0.3px;
+  margin-bottom: 14px;
 }
 
-.sidebar-header .user-name {
-  font-size: 13px;
+.sidebar-owner {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--primary);
+  padding: 7px 16px;
+  background: rgba(79,142,247,0.1);
+  border-radius: 20px;
+  border: 1px solid rgba(79,142,247,0.15);
+  display: inline-block;
+  margin-bottom: 12px;
+  letter-spacing: 0.3px;
+}
+
+.sidebar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  margin-bottom: 12px;
+}
+
+.header-action-btn {
+  background: none;
+  border: 1px solid var(--border);
+  padding: 7px 14px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
   color: var(--text-muted);
-  margin-top: 4px;
+  line-height: 1;
+  transition: color 0.2s, background 0.2s;
+  font-family: inherit;
+}
+
+.header-action-btn:first-child {
+  border-radius: 6px 0 0 6px;
+  border-right: none;
+}
+
+.header-action-btn:last-child {
+  border-radius: 0 6px 6px 0;
+}
+
+.header-action-sep {
+  width: 1px;
+  height: 20px;
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+.header-action-btn:hover {
+  color: var(--text);
+  background: var(--surface2);
+}
+
+.action-icon {
+  font-size: 18px;
+  vertical-align: -2px;
 }
 
 .sidebar-nav { flex: 1; padding: 12px 0; }
@@ -257,6 +314,13 @@ a:hover { text-decoration: underline; }
   flex: 1;
   margin-left: 260px;
   padding: 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.main-content > * {
+  width: 100%;
   max-width: 900px;
 }
 
@@ -269,6 +333,38 @@ a:hover { text-decoration: underline; }
 
 .page-header h1 { font-size: 24px; }
 .page-header .actions { display: flex; gap: 8px; }
+
+/* ── Vault dashboard grid ── */
+.vault-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+}
+
+.vault-grid > .card {
+  width: calc(25% - 9px);
+  min-width: 180px;
+}
+
+@media (max-width: 900px) {
+  .vault-grid > .card { width: calc(50% - 6px); }
+}
+
+@media (max-width: 500px) {
+  .vault-grid > .card { width: 100%; }
+}
+
+/* ── Vault dashboard cards ── */
+.vault-card {
+  text-align: center;
+  cursor: pointer;
+  padding: 24px 16px;
+}
+
+.vault-card-icon { font-size: 32px; margin-bottom: 10px; }
+.vault-card-name { font-weight: 600; font-size: 14px; }
+.vault-card-count { color: var(--text-muted); font-size: 13px; margin-top: 4px; }
 
 /* ── Cards & entries ── */
 .card {
@@ -476,7 +572,7 @@ a:hover { text-decoration: underline; }
     border-bottom: 1px solid var(--border);
   }
   .app-layout { flex-direction: column; }
-  .main-content { margin-left: 0; padding: 16px; }
+  .main-content { margin-left: 0; padding: 16px; align-items: stretch; }
   .checkin-banner { left: 0; }
   .field-grid { grid-template-columns: 1fr; }
 }
@@ -543,7 +639,7 @@ a:hover { text-decoration: underline; }
 
 /* ── Search box ── */
 .search-box {
-  margin-top: 12px;
+  margin-top: 0;
 }
 
 .search-box input {
@@ -631,34 +727,6 @@ a:hover { text-decoration: underline; }
   border-bottom: none;
 }
 
-/* ── Sidebar title row ── */
-.sidebar-title-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* ── Theme icon button ── */
-.theme-icon-btn {
-  background: none;
-  border: 1px solid var(--border);
-  border-radius: 50%;
-  width: 32px;
-  height: 32px;
-  font-size: 16px;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: background 0.2s, border-color 0.2s;
-  flex-shrink: 0;
-  line-height: 1;
-}
-
-.theme-icon-btn:hover {
-  background: var(--surface2);
-  border-color: var(--text-muted);
-}
 
 /* ── Scrollbar ── */
 ::-webkit-scrollbar { width: 6px; }

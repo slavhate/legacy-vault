@@ -6,6 +6,7 @@ A self-hosted, encrypted personal data vault designed for estate planning and fa
 ![Express](https://img.shields.io/badge/Express-5-blue)
 ![SQLite](https://img.shields.io/badge/SQLite-WAL-lightgrey)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
+![Vibe Coded](https://img.shields.io/badge/Vibe%20Coded-with%20Claude-blueviolet)
 
 ## Why Legacy Vault?
 
@@ -235,6 +236,10 @@ From the UI: **Account Settings > Download Backup** creates a JSON file with all
 | Auth | JWT + bcrypt |
 | Frontend | Vanilla JS SPA |
 | Container | Docker (Alpine) |
+
+## Built With Claude
+
+This project was vibe coded entirely with [Claude](https://claude.ai/) by Anthropic -- from architecture and backend logic to frontend UI and Docker setup. Every line of code, the database schema, encryption layer, and even this README were generated through natural language conversation with Claude.
 
 ## Contributing
 

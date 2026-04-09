@@ -153,11 +153,13 @@ function sidebarHTML(activeKey) {
   return `
     <div class="sidebar">
       <div class="sidebar-header">
-        <div class="sidebar-title-row">
-          <h2>\u{1F512} Legacy Vault</h2>
-          <button class="theme-icon-btn" id="theme-btn" title="Toggle theme">${getTheme() === 'dark' ? '\u{1F319}' : '\u{2600}\u{FE0F}'}</button>
+        <h2 class="sidebar-brand">\u{1F512} Legacy Vault</h2>
+        <div class="sidebar-owner">${esc(state.user?.name)}</div>
+        <div class="sidebar-actions">
+          <button class="header-action-btn" id="home-btn" title="Home" data-nav="vault"><span class="action-icon">\u{2302}</span> Home</button>
+          <span class="header-action-sep"></span>
+          <button class="header-action-btn" id="theme-btn" title="Toggle theme"><span class="action-icon">${getTheme() === 'dark' ? '\u{263E}' : '\u{2600}'}</span> ${getTheme() === 'dark' ? 'Dark' : 'Light'}</button>
         </div>
-        <div class="user-name">${esc(state.user?.name)}</div>
         <div class="search-box">
           <input type="text" id="global-search" placeholder="Search vault..." />
         </div>
@@ -199,7 +201,7 @@ function bindSidebar() {
   if (tb) tb.onclick = () => {
     const next = getTheme() === 'dark' ? 'light' : 'dark';
     setTheme(next);
-    tb.textContent = next === 'dark' ? '\u{1F319}' : '\u{2600}\u{FE0F}';
+    tb.innerHTML = next === 'dark' ? '<span class="action-icon">\u{263E}</span> Dark' : '<span class="action-icon">\u{2600}</span> Light';
   };
 
   const searchInput = $('#global-search');
@@ -242,10 +244,10 @@ async function renderDashboard() {
 
   const cards = Object.entries(SECTIONS).map(([k, s]) => {
     const cnt = state.counts[k] || 0;
-    return `<div class="card" style="cursor:pointer" data-nav="section/${k}">
-      <div style="font-size:28px;margin-bottom:8px">${s.icon}</div>
-      <div style="font-weight:600">${esc(s.name)}</div>
-      <div style="color:var(--text-muted);font-size:13px">${cnt} ${cnt === 1 ? 'entry' : 'entries'}</div>
+    return `<div class="card vault-card" data-nav="section/${k}">
+      <div class="vault-card-icon">${s.icon}</div>
+      <div class="vault-card-name">${esc(s.name)}</div>
+      <div class="vault-card-count">${cnt} ${cnt === 1 ? 'entry' : 'entries'}</div>
     </div>`;
   }).join('');
 
@@ -260,7 +262,7 @@ async function renderDashboard() {
     ${totalEntries > 0 ? `<div class="alert alert-info" style="margin-bottom:24px">
       ${totalEntries} total entries across ${Object.keys(state.counts).length} sections. All data is AES-256-GCM encrypted.
     </div>` : ''}
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px">${cards}</div>
+    <div class="vault-grid">${cards}</div>
   `);
   bindSidebar();
 
