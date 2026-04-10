@@ -1,5 +1,13 @@
 FROM node:22-alpine
 
+LABEL org.opencontainers.image.title="Legacy Vault"
+LABEL org.opencontainers.image.description="Self-hosted, encrypted personal data vault for estate planning"
+LABEL org.opencontainers.image.version="1.0.0"
+LABEL org.opencontainers.image.authors="slavhate"
+LABEL org.opencontainers.image.url="https://github.com/slavhate/legacy-vault"
+LABEL org.opencontainers.image.source="https://github.com/slavhate/legacy-vault"
+LABEL org.opencontainers.image.licenses="MIT"
+
 WORKDIR /app
 
 COPY package*.json ./
