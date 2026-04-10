@@ -6,6 +6,7 @@ A self-hosted, encrypted personal data vault designed for estate planning and fa
 ![Express](https://img.shields.io/badge/Express-5-blue)
 ![SQLite](https://img.shields.io/badge/SQLite-WAL-lightgrey)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
+![Docker](https://img.shields.io/docker/v/shri32msi/legacy-vault?label=Docker%20Hub&color=blue)
 ![Vibe Coded](https://img.shields.io/badge/Vibe%20Coded-with%20Claude-blueviolet)
 
 ## Why Legacy Vault?
@@ -63,23 +64,38 @@ Legacy Vault solves this by providing a single, encrypted store for all critical
 
 ## Quick Start
 
-### With Docker (recommended)
+### Using Docker Hub image (fastest)
+
+Pull the pre-built image and run -- no cloning needed:
 
 ```bash
-git clone https://github.com/your-username/legacy-vault.git
+docker run -d \
+  --name legacy-vault \
+  -p 3000:3000 \
+  -v legacy-vault-data:/app/data \
+  shri32msi/legacy-vault:latest
+```
+
+The app will be available at `http://localhost:3000`.
+
+> **Available tags:** `latest`, `1.0.0`
+> **Docker Hub:** [shri32msi/legacy-vault](https://hub.docker.com/r/shri32msi/legacy-vault)
+
+### Build from source with Docker
+
+```bash
+git clone https://github.com/slavhate/legacy-vault.git
 cd legacy-vault
 cp .env.example .env
 docker compose up -d
 ```
-
-The app will be available at `http://localhost:3000`.
 
 ### Without Docker
 
 Requires Node.js 20+ and a C/C++ compiler for `better-sqlite3` native bindings.
 
 ```bash
-git clone https://github.com/your-username/legacy-vault.git
+git clone https://github.com/slavhate/legacy-vault.git
 cd legacy-vault
 cp .env.example .env
 npm install
