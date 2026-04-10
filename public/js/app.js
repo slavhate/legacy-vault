@@ -282,7 +282,7 @@ function showExportView(data) {
     grouped[e.section].push(e);
   });
 
-  let html = `<html><head><title>Legacy Vault Export - ${esc(data.owner.name)}</title>
+  let html = `<html><head><meta charset="utf-8"><title>Legacy Vault Export - ${esc(data.owner.name)}</title>
     <style>body{font-family:sans-serif;max-width:800px;margin:40px auto;color:#222;line-height:1.5}
     h1{border-bottom:2px solid #333;padding-bottom:8px}h2{margin-top:32px;color:#444;border-bottom:1px solid #ccc;padding-bottom:4px}
     .entry{margin:16px 0;padding:12px;border:1px solid #ddd;border-radius:6px}
@@ -297,7 +297,7 @@ function showExportView(data) {
   for (const [sectionKey, entries] of Object.entries(grouped)) {
     const sec = SECTIONS[sectionKey];
     if (!sec) continue;
-    html += `<h2>${sec.icon} ${esc(sec.name)}</h2>`;
+    html += `<h2>${esc(sec.name)}</h2>`;
     for (const e of entries) {
       html += `<div class="entry"><h3>${esc(e.title)}</h3><div class="fields">`;
       for (const f of (sec.fields || [])) {
