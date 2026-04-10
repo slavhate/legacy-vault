@@ -9,6 +9,8 @@ A self-hosted, encrypted personal data vault designed for estate planning and fa
 ![Docker](https://img.shields.io/docker/v/shri32msi/legacy-vault?label=Docker%20Hub&color=blue)
 ![Vibe Coded](https://img.shields.io/badge/Vibe%20Coded-with%20Claude-blueviolet)
 
+![Legacy Vault Screenshot](docs/screenshot.png)
+
 ## Why Legacy Vault?
 
 When someone passes away unexpectedly, their family often faces a painful scavenger hunt: which banks had accounts? Where are the insurance policies? What are the login credentials? Who is the lawyer?
