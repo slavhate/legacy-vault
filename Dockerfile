@@ -3,9 +3,11 @@ FROM node:22-alpine AS deps
 WORKDIR /app
 COPY package*.json ./
 # Install prod deps only; better-sqlite3 needs native build tools
-RUN apk add --no-cache python3 make g++ && \
+RUN sed -i 's/https/http/' /etc/apk/repositories && \
+    apk add --no-cache python3 make g++ && \
     npm install --omit=dev && \
-    apk del python3 make g++
+    apk del python3 make g++ && \
+    sed -i 's/http/https/' /etc/apk/repositories
 
 # ── Stage 2: final minimal image ──
 FROM node:22-alpine AS final
