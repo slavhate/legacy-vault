@@ -14,6 +14,7 @@ const PORT = process.env.PORT || 3000;
 
 app.use(helmet({
   contentSecurityPolicy: {
+    useDefaults: false,
     directives: {
       defaultSrc: ["'self'"],
       scriptSrc: ["'self'", "'unsafe-inline'"],
@@ -23,7 +24,9 @@ app.use(helmet({
       fontSrc: ["'self'"],
       objectSrc: ["'none'"],
       frameAncestors: ["'none'"],
-      upgradeInsecureRequests: null
+      baseUri: ["'self'"],
+      formAction: ["'self'"],
+      scriptSrcAttr: ["'none'"]
     }
   }
 }));
